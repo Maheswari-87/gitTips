@@ -1,7 +1,7 @@
 [{
     "title": "Everyday Git in twenty commands or so",
     "tip": "git help everyday"
-}, {
+},{
     "title": "Show helpful guides that come with Git",
     "tip": "git help -g"
 }, {
@@ -42,8 +42,7 @@
     "tip": "git branch --merged master"
 }, {
     "title": "Quickly switch to the previous branch",
-    "tip": "git checkout -",
-    "alternatives": ["git checkout @{-1}"]
+    "tip": "git checkout -"
 }, {
     "title": "Remove branches that have already been merged with master",
     "tip": "git branch --merged master | grep -v '^\\*' | xargs -n 1 git branch -d"
