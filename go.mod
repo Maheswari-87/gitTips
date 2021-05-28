@@ -1,3 +1,3 @@
-module gitTips/tips
+module tips
 
 go 1.16

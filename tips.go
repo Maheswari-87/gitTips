@@ -3,7 +3,6 @@ package gitTips
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"strings"
 )
@@ -19,26 +18,6 @@ func GetTip(jsonData map[string]string, key string) string {
 	return ""
 }
 
-func LoadTipsFromJsonFile() string {
-	var result string
-	data, err := ioutil.ReadFile("JsonFile/tips.json")
-	if err != nil {
-		fmt.Print(err)
-	}
-
-	var configs []GitTips
-	err = json.Unmarshal(data, &configs)
-	if err != nil {
-		fmt.Println("error:", err)
-	}
-	result = string(data)
-
-	//for _, v := range configs {
-	//fmt.Println(v.Title, "\n", v.Tip)
-	//}
-	return result
-}
-
 type GitTips struct {
 	Title string `json:"title"`
 	Tip   string `json:"tip"`
@@ -46,12 +25,13 @@ type GitTips struct {
 
 //reading json file
 func ReadJsonFile() ([]byte, error) {
-	jsonData, err := ioutil.ReadFile("C:\\Users\\SRS\\repos\\githubProjects\\tips\\jsonFile\\tips.json")
+	jsonData, err := ioutil.ReadFile("data\\tips.json")
 	if err != nil {
 		return []byte{}, errors.New("file issue")
 	}
 	return jsonData, nil
 }
+
 func LoadTipsFromJson() ([]GitTips, string) {
 	p, _ := ReadJsonFile()
 	var result []GitTips
@@ -71,7 +51,6 @@ func GetTipRefactor(key string) string {
 }
 
 func UserInput(key string) string {
-	//Validation
 	_, data := LoadTipsFromJson()
 	if key == "" {
 		return "invalid data"
@@ -80,7 +59,6 @@ func UserInput(key string) string {
 	} else {
 		return ""
 	}
-
 }
 
 func DisplayTip(tip string) map[string]string {
@@ -91,5 +69,4 @@ func DisplayTip(tip string) map[string]string {
 		}
 	}
 	return map[string]string{}
-
 }

@@ -1,8 +1,6 @@
 package gitTips
 
 import (
-	"fmt"
-	"io/ioutil"
 	"reflect"
 	"testing"
 )
@@ -39,20 +37,6 @@ func TestGetTipRefactor(t *testing.T) {
 
 }
 
-//read json
-func TestLoadTipsFromJsonFile(t *testing.T) {
-	got := LoadTipsFromJsonFile()
-	data, err := ioutil.ReadFile("JsonFile/tips.json")
-	if err != nil {
-		fmt.Print(err)
-	}
-	want := string(data)
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
-
-}
-
 //Refactor Read json
 func TestLoadTipsFromJson(t *testing.T) {
 	_, got := LoadTipsFromJson()
@@ -75,7 +59,6 @@ func TestReadJsonFileNegative(t *testing.T) {
 func TestUserInput(t *testing.T) {
 	key := MockUserInputString()
 	got := UserInput(key)
-	//want := []string{"git branch -d <local_branchname>", "git push origin --delete <remote_branchname>", "git tag -d <tag-name>", "git push origin :refs/tags/<tag-name>"}
 	want := "delete"
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %q  want %q", got, want)
