@@ -1,6 +1,5 @@
 # Git and Git-tips
 
-
 ## Git
 Git is open source version control management and collaboration software.
 
@@ -11,6 +10,8 @@ Git is open source version control management and collaboration software.
 1. Git supports many command-line tools and graphical user interfaces. 
 
 ##  Git-tips
+
+[Git-tips](https://github.com/git-tips/tips)
 
 git-tips is collection of all git commands.The Command Line Interface(It is a program that allows users to type text commands instructing the computer to do specific tasks.) will make optimum use of these git-tips.The command line is the only place where you can run all the Git commands.
 
@@ -27,7 +28,21 @@ git-tips is collection of all git commands.The Command Line Interface(It is a pr
 1. git checkout
 
 ## Advance Git Commands
-1. 
-1. 
+1. git merge [branch]
+1. git stash
+1. git reset -- hard
+1. git rebase
+1. git diff
+1. git remote
+1. git SSH
+
+## Flow for Git-tips Project
+* Basic Functionality✅
+* Help page(Readme.md)🟡
+* Add tests🟡
+* Add more relevant tests to increase code coverage🟡
+* Code coverage🟡
+* Add Mock functionality🟡
+
 
 
