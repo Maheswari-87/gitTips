@@ -2,6 +2,8 @@ package gitTips
 
 import (
 	"encoding/json"
+	"errors"
+	"io/ioutil"
 	"strings"
 )
 
@@ -22,16 +24,16 @@ type GitTips struct {
 }
 
 //reading json data from file
-/*func ReadJsonFile() ([]byte, error) {
-	jsonData, err := ioutil.ReadFile("data\\tips.json")
+func ReadJsonFile() ([]byte, error) {
+	jsonData, err := ioutil.ReadFile("data\\tipsData.json")
 	if err != nil {
 		return []byte{}, errors.New("file issue")
 	}
 	return jsonData, nil
-}*/
+}
 
 func LoadTipsFromJson() ([]GitTips, string) {
-	p, _ := MockReadJsonFile()
+	p, _ := ReadJsonFile()
 	var result []GitTips
 	json.Unmarshal([]byte(p), &result)
 	return result, string(p)
