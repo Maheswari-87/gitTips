@@ -40,7 +40,7 @@ func TestGetTipRefactor(t *testing.T) {
 //Refactor Read json
 func TestLoadTipsFromJson(t *testing.T) {
 	_, got := LoadTipsFromJson()
-	expected := MockReadJsonFile()
+	expected, _ := MockReadJsonFile()
 
 	if !reflect.DeepEqual(got, expected) {
 		t.Errorf("got %q want %q", got, expected)
@@ -48,7 +48,7 @@ func TestLoadTipsFromJson(t *testing.T) {
 }
 
 func TestReadJsonFileNegative(t *testing.T) {
-	_, err := ReadJsonFile()
+	_, err := MockReadJsonFile()
 	want := "file issue"
 
 	if reflect.DeepEqual(err, want) {
