@@ -47,31 +47,59 @@ func TestLoadTipsFromJson(t *testing.T) {
 	}
 }
 
-func TestReadJsonFileNegative(t *testing.T) {
-	_, err := MockReadJsonFile()
-	want := "file issue"
+// func TestReadJsonFileNegative(t *testing.T) {
+// 	_, err := MockReadJsonFile()
+// 	want := "file issue"
 
-	if reflect.DeepEqual(err, want) {
-		t.Errorf("err %q want %q", err, want)
-	}
-}
+// 	if reflect.DeepEqual(err, want) {
+// 		t.Errorf("err %q want %q", err, want)
+// 	}
+// }
 
 func TestUserInput(t *testing.T) {
-	key := MockUserInputString()
-	got := UserInput(key)
-	want := "delete"
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("got %q  want %q", got, want)
-	}
+	t.Run("Delete", func(t *testing.T) {
+		key := MockUserInputString()
+		got := UserInput(key)
+		want := "delete"
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %q  want %q", got, want)
+		}
+	})
+	t.Run("Dummy", func(t *testing.T) {
+		key := "Dummy"
+		got := UserInput(key)
+		want := "invalid title"
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %q  want %q", got, want)
+		}
+	})
+	t.Run("invalid", func(t *testing.T) {
+		key := ""
+		got := UserInput(key)
+		want := "invalid data"
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %q  want %q", got, want)
+		}
+	})
 
 }
 
 func TestDisplayTip(t *testing.T) {
-	tip := "git stash"
-	got := DisplayTip(tip)
-	want := map[string]string{"title": "Saving current state of tracked files without commiting", "tip": "git stash"}
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("got %q  want %q", got, want)
-	}
+	t.Run("", func(t *testing.T) {
+		tip := "git stash"
+		got := DisplayTip(tip)
+		want := map[string]string{"title": "Saving current state of tracked files without commiting", "tip": "git stash"}
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %q  want %q", got, want)
+		}
+	})
+	t.Run("", func(t *testing.T) {
+		tip := "dummy"
+		got := DisplayTip(tip)
+		want := map[string]string{}
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %q  want %q", got, want)
+		}
+	})
 
 }

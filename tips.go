@@ -2,7 +2,6 @@ package gitTips
 
 import (
 	"encoding/json"
-	"errors"
 	"io/ioutil"
 	"strings"
 )
@@ -12,10 +11,9 @@ func GetTip(jsonData map[string]string, key string) string {
 	for _, value := range jsonData {
 		if strings.ContainsAny(key, value) {
 			result = jsonData["Tip"]
-			return result
 		}
 	}
-	return ""
+	return result
 }
 
 type GitTips struct {
@@ -25,10 +23,10 @@ type GitTips struct {
 
 //reading json data from file
 func ReadJsonFile() ([]byte, error) {
-	jsonData, err := ioutil.ReadFile("data\\tipsData.json")
-	if err != nil {
-		return []byte{}, errors.New("file issue")
-	}
+	jsonData, _ := ioutil.ReadFile("data\\tipsData.json")
+	// if err != nil {
+	// 	return []byte{}, errors.New("file issue")
+	// }
 	return jsonData, nil
 }
 
@@ -57,7 +55,7 @@ func UserInput(key string) string {
 	} else if strings.Contains(data, key) {
 		return key
 	} else {
-		return ""
+		return "invalid title"
 	}
 }
 
